@@ -11,19 +11,19 @@ struct MainView: View {
     @State private var navigationPath = NavigationPath()
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Area.creationDate, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \MLArea.creationDate, ascending: true)],
         animation: .default)
-    private var areas: FetchedResults<Area>
+    private var areas: FetchedResults<MLArea>
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                FloatingClouds()
-                AreaListView()
-                    .navigationDestination(for: Area.self) { area in
-                        AreaDetailView(area: area)
-                    }
-            }
+            AreaListView()
+                .navigationDestination(for: MLArea.self) { area in
+                    AreaDetailView(area)
+                }
+                .navigationDestination(for: MLTask.self) { task in
+                    TaskDetailView(task)
+                }
         }
     }
 }

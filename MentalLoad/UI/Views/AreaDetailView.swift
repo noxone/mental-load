@@ -8,24 +8,34 @@
 import SwiftUI
 
 struct AreaDetailView: View {
-    let area: Area
+    let area: MLArea
     
     /*@FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Task.creationDate, ascending: true)],
-        predicate: NSPredicate(format: "%K = %@", #keyPath(MentalLoad.Task.belongs_to), area),
+        sortDescriptors: [NSSortDescriptor(keyPath: \MLTask.creationDate, ascending: true)],
+        predicate: NSPredicate(format: "%K = %@", #keyPath(MentalLoad.MLTask.belongs_to), area),
         animation: .default)
-    private var tasks: FetchedResults<Task>*/
+    private var tasks: FetchedResults<MLTask>*/
     
-    private var fetchRequest : FetchRequest<Task>
-    private var tasks: FetchedResults<Task> {
-        fetchRequest.wrappedValue
+    private var taskFetchRequest : FetchRequest<MLTask>
+    private var tasks: FetchedResults<MLTask> {
+        taskFetchRequest.wrappedValue
     }
     
-    init(area: Area) {
+    private var participantFetchRequest : FetchRequest<MLParticipant>
+    private var participants: FetchedResults<MLParticipant> {
+        participantFetchRequest.wrappedValue
+    }
+    
+    init(_ area: MLArea) {
         self.area = area
-        self.fetchRequest = FetchRequest(
-            sortDescriptors: [NSSortDescriptor(keyPath: \Task.creationDate, ascending: true)],
-            predicate: NSPredicate(format: "%K == %@", #keyPath(Task.belongs_to), area),
+        self.taskFetchRequest = FetchRequest(
+            sortDescriptors: [NSSortDescriptor(keyPath: \MLTask.creationDate, ascending: true)],
+            predicate: NSPredicate(format: "%K == %@", #keyPath(MLTask.belongs_to), area),
+            animation: .default
+        )
+        self.participantFetchRequest = FetchRequest(
+            sortDescriptors: [NSSortDescriptor(keyPath: \MLParticipant.name, ascending: true)],
+            predicate: NSPredicate(format: "%K CONTAINS %@", #keyPath(MLParticipant.takes_part_in), area),
             animation: .default
         )
     }
@@ -38,8 +48,17 @@ struct AreaDetailView: View {
                 }
             } else {
                 List {
-                    ForEach(tasks) { task in
-                        Text(task.title ?? "No task title")
+                    Section("Tasks") {
+                        ForEach(tasks) { task in
+                            NavigationLink(value: task) {
+                                OptionalValueDisplay(task.title, alternative: "No task title")
+                            }
+                        }
+                    }
+                    Section("Participants") {
+                        ForEach(participants) { participant in
+                            OptionalValueDisplay(participant.name, alternative: "No name")
+                        }
                     }
                 }
             }
@@ -50,15 +69,8 @@ struct AreaDetailView: View {
 }
 
 #Preview {
-    @Previewable let area = {
-        let context = PersistenceController.preview.container.viewContext
-        let area = Area(context: context)
-        area.title = "Area Title"
-        area.subtitle = "Some more text for the subtitle mentioning where we can think about other stuff to do like syllable breaks. Now we add even more text to this so it may overflow the area and we can see how it looks."
-        return area
-    }()
-    
     NavigationStack {
-        AreaDetailView(area: area)
+        AreaDetailView(PersistenceController.preview.preview_getChildArea())
     }
+    .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

@@ -11,9 +11,9 @@ struct AreaListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Area.creationDate, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \MLArea.creationDate, ascending: true)],
         animation: .default)
-    private var areas: FetchedResults<Area>
+    private var areas: FetchedResults<MLArea>
     
     var body: some View {
         ScrollView {

@@ -9,14 +9,17 @@ import Foundation
 import CoreData
 
 extension PersistenceController {
-    func createArea(title: String, subtitle: String, context: NSManagedObjectContext) -> Area {
-        let area = Area(context: context)
+    func createArea(title: String, subtitle: String?, context: NSManagedObjectContext) -> MLArea {
+        let area = MLArea(context: context)
         area.title = title
         area.subtitle = subtitle
         area.creationDate = Date()
         context.save(with: .addArea)
         return area
     }
+    
+    
+    
     
     /*
     func createOrUpdateBlogEntries(from rawEntries: [RawEntry], validState: BlogEntry.ValidState, context: NSManagedObjectContext) async throws -> [BlogEntry] {

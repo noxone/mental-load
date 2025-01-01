@@ -19,7 +19,7 @@ extension PersistenceController {
             newItem.timestamp = Date()
         }
         
-        createPreviewData(in: viewContext)
+        result.createPreviewData()
         
         do {
             try viewContext.save()
@@ -32,75 +32,86 @@ extension PersistenceController {
         return result
     }()
     
-    private static func createPreviewData(in context: NSManagedObjectContext) {
-        // create areas
-        let areas = [
-            Area(context: context),
-            Area(context: context),
-            Area(context: context),
-        ]
-        areas[0].title = "Work"
-        areas[0].subtitle = "Work related tasks"
-        areas[1].title = "Household"
-        areas[2].title = "Child"
-        areas[2].subtitle = "Child related tasks"
-        for area in areas {
-            area.creationDate = Date()
-        }
+    private func createPreviewData() {
+        let context = container.viewContext
         
-        // create participants
-        let participants = [
-            Participant(context: context),
-            Participant(context: context),
-            Participant(context: context),
-        ]
-        participants[0].name = "Oscar"
-        participants[1].name = "Maria"
-        participants[2].name = "Juan"
-        for participant in participants {
-            participant.creationDate = Date()
-        }
-        
-        // create tasks
-        let taskNames: [String] = ["Buy groceries", "Clean house", "Do homework", "Feed Baby", "Climb a mountain", "Think of Kindergarden", "List the alphabet", "Do some coding", "Cook meals", "Think of meals", "Be yourself"]
-        let tasks = taskNames.map { taskName in
-            let task = Task(context: context)
-            task.title = taskName
-            task.creationDate = Date()
-            task.icon = "pencil.tip.crop.circle.badge.plus.fill"
-            if taskName.count % 3 != 0 {
-                task.subtitle = "Some more description for \(taskName)"
-            }
-            return task
-        }
-        
-        
-        // connect some entities
-        var area = areas[0]
-        area.addToHas_participants(participants[0])
-        area.addToHas_participants(participants[1])
-        for index in 0..<8 {
-            area.addToConsists_of(tasks[index])
-        }
-        for index in 0..<area.consists_of!.count {
-            let task = area.consists_of!.allObjects[index] as! Task
-            if index % 2 == 0 {
-                task.addToIs_assigned_to(participants[0])
-            }
-            if index % 3 != 0 {
-                task.addToIs_assigned_to(participants[1])
-            }
-        }
-        
-        
-        areas[1].addToHas_participants(participants[1])
-        areas[1].addToHas_participants(participants[2])
+        let workArea = createArea(title: "Work", subtitle: "Work related tasks", context: context)
+        let houseArea = createArea(title: "Househole", subtitle: nil, context: context)
+        let childArea = createArea(title: "Child", subtitle: "Child related tasks", context: context)
 
-        areas[2].addToHas_participants(participants[0])
-        areas[2].addToHas_participants(participants[1])
-        areas[2].addToHas_participants(participants[2])
-        for index in 3..<tasks.count {
-            areas[2].addToConsists_of(tasks[index])
-        }
+        let task1 = createTask(withTitle: "Buy groceries", andSubtitle: "Some more description for groceries", for: workArea, context: context)
+        let task2 = createTask(withTitle: "Clean house", andSubtitle: nil, for: workArea, context: context)
+        let task3 = createTask(withTitle: "Do homework", andSubtitle: "Even more description for homework", for: workArea, context: context)
+        
+        let task4 = createTask(withTitle: "Feed Baby", andSubtitle: "", for: childArea, context: context)
+        let task5 = createTask(withTitle: "Climb a mountain", andSubtitle: nil, for: houseArea, context: context)
+        let task6 = createTask(withTitle: "Think of Kindergarden", andSubtitle: "What do you think of Kindergarden", for: houseArea, context: context)
+        let task7 = createTask(withTitle: "List the alphabet", andSubtitle: "The alphabet consists of 26 letters and we need to list them for our baby and some quite strange other reasons", for: houseArea, context: context)
+        let task8 = createTask(withTitle: "Do some coding", andSubtitle: "Well, we need to do some coding", for: houseArea, context: context)
+        let task9 = createTask(withTitle: "Cook meals", andSubtitle: "Cooking meals is quite easy and one of the most important things", for: houseArea, context: context)
+        let task10 = createTask(withTitle: "Think of meals", andSubtitle: "But before that we need to think of meals", for: houseArea, context: context)
+        let task11 = createTask(withTitle: "Be yourself", andSubtitle: "And in the end we all need to be ourselves", for: houseArea, context: context)
+        
+        let part1 = createParticipant(withName: "Oscar", for: workArea, context: context)
+        let part2 = createParticipant(withName: "Maria", for: workArea, context: context)
+        
+        let part3 = createParticipant(withName: "Juan", for: houseArea, context: context)
+        
+        let part4 = createParticipant(withName: "Benny", for: childArea, context: context)
+        let part5 = createParticipant(withName: "Helena", for: childArea, context: context)
+        let part6 = createParticipant(withName: "Eric", for: childArea, context: context)
+        
+        assign(task1, to: part1, context: context)
+        assign(task2, to: part1, context: context)
+        assign(task2, to: part2, context: context)
+        assign(task3, to: part2, context: context)
+        
+        workArea.sort = 1
+        houseArea.sort = 2
+        childArea.sort = 3
+        
+        task1.sort = 1
+        task2.sort = 2
+        task3.sort = 3
+        task4.sort = 4
+        task5.sort = 5
+        task6.sort = 6
+        task7.sort = 7
+        task8.sort = 8
+        task9.sort = 9
+        task10.sort = 10
+        task11.sort = 11
+        
+        try! context.save()
+    }
+        
+    @MainActor
+    func preview_getWorkArea() -> MLArea {
+        let context = PersistenceController.preview.container.viewContext
+        let request = MLArea.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(MLArea.title), "Work")
+        request.fetchLimit = 1
+        
+        return try! context.fetch(request).first!
+    }
+    
+    @MainActor
+    func preview_getChildArea() -> MLArea {
+        let context = PersistenceController.preview.container.viewContext
+        let request = MLArea.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(MLArea.title), "Child")
+        request.fetchLimit = 1
+        
+        return try! context.fetch(request).first!
+    }
+    
+    @MainActor
+    func preview_getCleanHouseTask() -> MLTask {
+        let context = PersistenceController.preview.container.viewContext
+        let request = MLTask.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(MLTask.title), "Clean house")
+        request.fetchLimit = 1
+        
+        return try! context.fetch(request).first!
     }
 }

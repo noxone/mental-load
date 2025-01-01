@@ -48,6 +48,9 @@ extension NSManagedObjectContext {
         case addArea, updateArea, deleteArea
         case addParticipant, updateParticipant, deleteParticipant
         case addTask, updateTask, deleteTask
+        case updateAreaParticipantRelationship
+        case updateAreaTaskRelationship
+        case updateTaskParticipantRelationship
         case deduplicateAndWait
     }
     /**
