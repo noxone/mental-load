@@ -6,6 +6,35 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C5F65AC72D2682700091B872 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5F65AAB2D26826F0091B872 /* Preview Assets.xcassets */; };
+		C5F65AC82D2682700091B872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5F65AC02D26826F0091B872 /* Assets.xcassets */; };
+		C5F65ACA2D2682700091B872 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA22D26826F0091B872 /* CoreDataHelper.swift */; };
+		C5F65ACB2D2682700091B872 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA32D26826F0091B872 /* PersistenceController.swift */; };
+		C5F65ACC2D2682700091B872 /* PersistenceController+Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA42D26826F0091B872 /* PersistenceController+Area.swift */; };
+		C5F65ACD2D2682700091B872 /* PersistenceController+Area+Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA52D26826F0091B872 /* PersistenceController+Area+Participant.swift */; };
+		C5F65ACE2D2682700091B872 /* PersistenceController+Area+Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA62D26826F0091B872 /* PersistenceController+Area+Task.swift */; };
+		C5F65ACF2D2682700091B872 /* PersistenceController+Deduplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA72D26826F0091B872 /* PersistenceController+Deduplicate.swift */; };
+		C5F65AD02D2682700091B872 /* PersistenceController+History.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA82D26826F0091B872 /* PersistenceController+History.swift */; };
+		C5F65AD12D2682700091B872 /* PersistenceController+Task+Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AA92D26826F0091B872 /* PersistenceController+Task+Participant.swift */; };
+		C5F65AD22D2682700091B872 /* PreviewPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AAC2D26826F0091B872 /* PreviewPersistence.swift */; };
+		C5F65AD32D2682700091B872 /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AAE2D26826F0091B872 /* Clouds.swift */; };
+		C5F65AD42D2682700091B872 /* AreaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB02D26826F0091B872 /* AreaDetailView.swift */; };
+		C5F65AD52D2682700091B872 /* AreaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB12D26826F0091B872 /* AreaListView.swift */; };
+		C5F65AD62D2682700091B872 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB22D26826F0091B872 /* TaskDetailView.swift */; };
+		C5F65AD72D2682700091B872 /* AreaDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB42D26826F0091B872 /* AreaDisplay.swift */; };
+		C5F65AD82D2682700091B872 /* EditableTitledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB52D26826F0091B872 /* EditableTitledText.swift */; };
+		C5F65AD92D2682700091B872 /* HyphenableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB62D26826F0091B872 /* HyphenableText.swift */; };
+		C5F65ADA2D2682700091B872 /* OptionalValueDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB72D26826F0091B872 /* OptionalValueDisplay.swift */; };
+		C5F65ADB2D2682700091B872 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AB82D26826F0091B872 /* Title.swift */; };
+		C5F65ADC2D2682700091B872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65ABA2D26826F0091B872 /* ContentView.swift */; };
+		C5F65ADD2D2682700091B872 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65ABB2D26826F0091B872 /* MainView.swift */; };
+		C5F65ADE2D2682700091B872 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65ABD2D26826F0091B872 /* Logger.swift */; };
+		C5F65ADF2D2682700091B872 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65ABE2D26826F0091B872 /* String.swift */; };
+		C5F65AE02D2682700091B872 /* MentalLoad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AC32D26826F0091B872 /* MentalLoad.xcdatamodeld */; };
+		C5F65AE12D2682700091B872 /* MentalLoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AC42D26826F0091B872 /* MentalLoadApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C5F65A4E2D2090F30091B872 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,27 +56,37 @@
 		C5F65A362D2090F10091B872 /* MentalLoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MentalLoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F65A4D2D2090F30091B872 /* MentalLoadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalLoadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5F65A572D2090F30091B872 /* MentalLoadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MentalLoadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5F65AA22D26826F0091B872 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		C5F65AA32D26826F0091B872 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		C5F65AA42D26826F0091B872 /* PersistenceController+Area.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Area.swift"; sourceTree = "<group>"; };
+		C5F65AA52D26826F0091B872 /* PersistenceController+Area+Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Area+Participant.swift"; sourceTree = "<group>"; };
+		C5F65AA62D26826F0091B872 /* PersistenceController+Area+Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Area+Task.swift"; sourceTree = "<group>"; };
+		C5F65AA72D26826F0091B872 /* PersistenceController+Deduplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Deduplicate.swift"; sourceTree = "<group>"; };
+		C5F65AA82D26826F0091B872 /* PersistenceController+History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+History.swift"; sourceTree = "<group>"; };
+		C5F65AA92D26826F0091B872 /* PersistenceController+Task+Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController+Task+Participant.swift"; sourceTree = "<group>"; };
+		C5F65AAB2D26826F0091B872 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C5F65AAC2D26826F0091B872 /* PreviewPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPersistence.swift; sourceTree = "<group>"; };
+		C5F65AAE2D26826F0091B872 /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
+		C5F65AB02D26826F0091B872 /* AreaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaDetailView.swift; sourceTree = "<group>"; };
+		C5F65AB12D26826F0091B872 /* AreaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaListView.swift; sourceTree = "<group>"; };
+		C5F65AB22D26826F0091B872 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		C5F65AB42D26826F0091B872 /* AreaDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaDisplay.swift; sourceTree = "<group>"; };
+		C5F65AB52D26826F0091B872 /* EditableTitledText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTitledText.swift; sourceTree = "<group>"; };
+		C5F65AB62D26826F0091B872 /* HyphenableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyphenableText.swift; sourceTree = "<group>"; };
+		C5F65AB72D26826F0091B872 /* OptionalValueDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValueDisplay.swift; sourceTree = "<group>"; };
+		C5F65AB82D26826F0091B872 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
+		C5F65ABA2D26826F0091B872 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C5F65ABB2D26826F0091B872 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C5F65ABD2D26826F0091B872 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		C5F65ABE2D26826F0091B872 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		C5F65AC02D26826F0091B872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C5F65AC12D26826F0091B872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5F65AC22D26826F0091B872 /* MentalLoad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalLoad.entitlements; sourceTree = "<group>"; };
+		C5F65AC42D26826F0091B872 /* MentalLoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalLoadApp.swift; sourceTree = "<group>"; };
+		C5F65AC62D2682700091B872 /* MentalLoad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MentalLoad.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C5F65A5F2D2090F30091B872 /* Exceptions for "MentalLoad" folder in "MentalLoad" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C5F65A352D2090F10091B872 /* MentalLoad */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C5F65A382D2090F10091B872 /* MentalLoad */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C5F65A5F2D2090F30091B872 /* Exceptions for "MentalLoad" folder in "MentalLoad" target */,
-			);
-			path = MentalLoad;
-			sourceTree = "<group>";
-		};
 		C5F65A502D2090F30091B872 /* MentalLoadTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MentalLoadTests;
@@ -88,7 +127,7 @@
 		C5F65A2D2D2090F10091B872 = {
 			isa = PBXGroup;
 			children = (
-				C5F65A382D2090F10091B872 /* MentalLoad */,
+				C5F65AC52D26826F0091B872 /* MentalLoad */,
 				C5F65A502D2090F30091B872 /* MentalLoadTests */,
 				C5F65A5A2D2090F30091B872 /* MentalLoadUITests */,
 				C5F65A372D2090F10091B872 /* Products */,
@@ -105,6 +144,97 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C5F65AAA2D26826F0091B872 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AA22D26826F0091B872 /* CoreDataHelper.swift */,
+				C5F65AA32D26826F0091B872 /* PersistenceController.swift */,
+				C5F65AA42D26826F0091B872 /* PersistenceController+Area.swift */,
+				C5F65AA52D26826F0091B872 /* PersistenceController+Area+Participant.swift */,
+				C5F65AA62D26826F0091B872 /* PersistenceController+Area+Task.swift */,
+				C5F65AA92D26826F0091B872 /* PersistenceController+Task+Participant.swift */,
+				C5F65AA82D26826F0091B872 /* PersistenceController+History.swift */,
+				C5F65AA72D26826F0091B872 /* PersistenceController+Deduplicate.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		C5F65AAD2D26826F0091B872 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AAB2D26826F0091B872 /* Preview Assets.xcassets */,
+				C5F65AAC2D26826F0091B872 /* PreviewPersistence.swift */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C5F65AAF2D26826F0091B872 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AAE2D26826F0091B872 /* Clouds.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		C5F65AB32D26826F0091B872 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AB02D26826F0091B872 /* AreaDetailView.swift */,
+				C5F65AB12D26826F0091B872 /* AreaListView.swift */,
+				C5F65AB22D26826F0091B872 /* TaskDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C5F65AB92D26826F0091B872 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AB42D26826F0091B872 /* AreaDisplay.swift */,
+				C5F65AB52D26826F0091B872 /* EditableTitledText.swift */,
+				C5F65AB62D26826F0091B872 /* HyphenableText.swift */,
+				C5F65AB72D26826F0091B872 /* OptionalValueDisplay.swift */,
+				C5F65AB82D26826F0091B872 /* Title.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		C5F65ABC2D26826F0091B872 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65ABB2D26826F0091B872 /* MainView.swift */,
+				C5F65AAF2D26826F0091B872 /* Background */,
+				C5F65AB32D26826F0091B872 /* Views */,
+				C5F65AB92D26826F0091B872 /* Widgets */,
+				C5F65ABA2D26826F0091B872 /* ContentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C5F65ABF2D26826F0091B872 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65ABD2D26826F0091B872 /* Logger.swift */,
+				C5F65ABE2D26826F0091B872 /* String.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C5F65AC52D26826F0091B872 /* MentalLoad */ = {
+			isa = PBXGroup;
+			children = (
+				C5F65AAA2D26826F0091B872 /* Persistence */,
+				C5F65AAD2D26826F0091B872 /* Preview Content */,
+				C5F65ABC2D26826F0091B872 /* UI */,
+				C5F65ABF2D26826F0091B872 /* Utils */,
+				C5F65AC02D26826F0091B872 /* Assets.xcassets */,
+				C5F65AC12D26826F0091B872 /* Info.plist */,
+				C5F65AC22D26826F0091B872 /* MentalLoad.entitlements */,
+				C5F65AC32D26826F0091B872 /* MentalLoad.xcdatamodeld */,
+				C5F65AC42D26826F0091B872 /* MentalLoadApp.swift */,
+			);
+			path = MentalLoad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +249,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C5F65A382D2090F10091B872 /* MentalLoad */,
 			);
 			name = MentalLoad;
 			packageProductDependencies = (
@@ -225,6 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F65AC72D2682700091B872 /* Preview Assets.xcassets in Resources */,
+				C5F65AC82D2682700091B872 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +378,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F65ACA2D2682700091B872 /* CoreDataHelper.swift in Sources */,
+				C5F65ACB2D2682700091B872 /* PersistenceController.swift in Sources */,
+				C5F65ACC2D2682700091B872 /* PersistenceController+Area.swift in Sources */,
+				C5F65ACD2D2682700091B872 /* PersistenceController+Area+Participant.swift in Sources */,
+				C5F65ACE2D2682700091B872 /* PersistenceController+Area+Task.swift in Sources */,
+				C5F65ACF2D2682700091B872 /* PersistenceController+Deduplicate.swift in Sources */,
+				C5F65AD02D2682700091B872 /* PersistenceController+History.swift in Sources */,
+				C5F65AD12D2682700091B872 /* PersistenceController+Task+Participant.swift in Sources */,
+				C5F65AD22D2682700091B872 /* PreviewPersistence.swift in Sources */,
+				C5F65AD32D2682700091B872 /* Clouds.swift in Sources */,
+				C5F65AD42D2682700091B872 /* AreaDetailView.swift in Sources */,
+				C5F65AD52D2682700091B872 /* AreaListView.swift in Sources */,
+				C5F65AD62D2682700091B872 /* TaskDetailView.swift in Sources */,
+				C5F65AD72D2682700091B872 /* AreaDisplay.swift in Sources */,
+				C5F65AD82D2682700091B872 /* EditableTitledText.swift in Sources */,
+				C5F65AD92D2682700091B872 /* HyphenableText.swift in Sources */,
+				C5F65ADA2D2682700091B872 /* OptionalValueDisplay.swift in Sources */,
+				C5F65ADB2D2682700091B872 /* Title.swift in Sources */,
+				C5F65ADC2D2682700091B872 /* ContentView.swift in Sources */,
+				C5F65ADD2D2682700091B872 /* MainView.swift in Sources */,
+				C5F65ADE2D2682700091B872 /* Logger.swift in Sources */,
+				C5F65ADF2D2682700091B872 /* String.swift in Sources */,
+				C5F65AE02D2682700091B872 /* MentalLoad.xcdatamodeld in Sources */,
+				C5F65AE12D2682700091B872 /* MentalLoadApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +761,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C5F65AC32D26826F0091B872 /* MentalLoad.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C5F65AC62D2682700091B872 /* MentalLoad.xcdatamodel */,
+			);
+			currentVersion = C5F65AC62D2682700091B872 /* MentalLoad.xcdatamodel */;
+			path = MentalLoad.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C5F65A2E2D2090F10091B872 /* Project object */;
 }
