@@ -17,4 +17,10 @@ extension PersistenceController {
         context.save(with: .addTask)
         return task
     }
+    
+    func remove(task: MLTask, from area: MLArea, context: NSManagedObjectContext) {
+        area.removeFromConsists_of(task)
+        context.delete(task)
+        context.save(with: .deleteTask)
+    }
 }

@@ -18,7 +18,7 @@ struct AreaListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 25, pinnedViews: [.sectionHeaders]) {
-                Section(header: Text("Areas").font(.largeTitle).bold().background(.ultraThinMaterial, in: Rectangle())) {
+                Section {
                     ForEach(areas) { area in
                         NavigationLink(value: area) {
                             AreaDisplay(area: area)

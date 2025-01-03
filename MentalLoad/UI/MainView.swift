@@ -18,6 +18,8 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             AreaListView()
+                .navigationTitle("Areas")
+                .toolbarTitleDisplayMode(.inlineLarge)
                 .navigationDestination(for: MLArea.self) { area in
                     AreaDetailView(area)
                 }

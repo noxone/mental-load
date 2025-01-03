@@ -53,14 +53,18 @@ struct TaskDetailView: View {
                     }
                     .onDelete(perform: removeParticipantsFromTask)
                     if editMode.isEditing {
-                        Button(action: { showAddParticipantSheet = true }, label: {Text("Add participant")})
-                            .confirmationDialog("Add participant", isPresented: $showAddParticipantSheet, titleVisibility: .automatic) {
-                                ForEach(participantsOfArea.filter { !participantsOfTask.contains($0) }) { participant in
-                                    Button(action: {
-                                        addParticipantToTask(participant)
-                                    }, label: { OptionalValueDisplay(participant.name) })
+                        let filteredParticipants = participantsOfArea.filter { !participantsOfTask.contains($0) }
+                        if !filteredParticipants.isEmpty {
+                            Button(action: { showAddParticipantSheet = true }, label: {Text("Add participant")})
+                                .confirmationDialog("Add participant", isPresented: $showAddParticipantSheet, titleVisibility: .automatic) {
+                                    ForEach(filteredParticipants) { participant in
+                                        Button(action: {
+                                            showAddParticipantSheet = false
+                                            addParticipantToTask(participant)
+                                        }, label: { OptionalValueDisplay(participant.name) })
+                                    }
                                 }
-                            }
+                        }
                     }
                 } else {
                     Text("No participants yet")

@@ -17,4 +17,10 @@ extension PersistenceController {
         context.save(with: .addParticipant)
         return participant
     }
+    
+    func remove(participant: MLParticipant, from area: MLArea, context: NSManagedObjectContext) {
+        // TODO: Make sure, the participant has no other tasks!
+        area.removeFromHas_participants(participant)
+        context.save(with: .deleteParticipant)
+    }
 }

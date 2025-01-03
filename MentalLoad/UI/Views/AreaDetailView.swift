@@ -50,6 +50,7 @@ struct AreaDetailView: View {
                                 OptionalValueDisplay(task.title, alternative: "No task title")
                             }
                         }
+                        .onDelete(perform: removeTasks)
                     } else {
                         MissingInfoText("No tasks added yet")
                     }
@@ -57,8 +58,18 @@ struct AreaDetailView: View {
                 Section("Participants") {
                     if !participants.isEmpty {
                         ForEach(participants) { participant in
-                            OptionalValueDisplay(participant.name, alternative: "No name")
+                            let deleteAllowed = participant.has_assigned?.count ?? 0 > 0
+                            HStack {
+                                OptionalValueDisplay(participant.name, alternative: "No name")
+                                Spacer()
+                                if deleteAllowed, let numberOfAssignedTasks = participant.has_assigned?.count {
+                                    Text("\(numberOfAssignedTasks)")
+                                        .opacity(0.7)
+                                }
+                            }
+                            .deleteDisabled(deleteAllowed)
                         }
+                        .onDelete(perform: removeParticipant)
                     } else {
                         MissingInfoText("No participants configured yet.")
                     }
@@ -68,21 +79,36 @@ struct AreaDetailView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(area.title ?? "No title")
         .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                EditButton()
+            }
+            
             if editMode.isEditing {
                 ToolbarItem(placement: .cancellationAction) {
                     RenameButton(buttonLabel: "Rename area", textHint: "New area name", value: $area.title)
-                    .onChange(of: area.title) { _, newValue in
-                        rename(area, to: newValue)
+                        .onChange(of: area.title) { _, _ in
+                            areaDidRename()
                     }
                 }
             }
         }
     }
     
-    private func rename(_ area: MLArea, to newName: String?) {
+    private func areaDidRename() {
+        viewContext.save(with: .updateArea)
+    }
+    
+    private func removeTasks(_ offsets: IndexSet) {
         withAnimation {
-            area.title = newName
-            viewContext.save(with: .updateArea)
+            offsets.map { tasks[$0] }
+                .forEach { PersistenceController.shared.remove(task: $0, from: area, context: viewContext) }
+        }
+    }
+    
+    private func removeParticipant(_ offsets: IndexSet) {
+        withAnimation {
+            offsets.map { participants[$0] }
+                .forEach { PersistenceController.shared.remove(participant: $0, from: area, context: viewContext) }
         }
     }
 }
