@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct AreaDetailView: View {
-    let area: MLArea
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.editMode) private var editMode
     
-    /*@FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \MLTask.creationDate, ascending: true)],
-        predicate: NSPredicate(format: "%K = %@", #keyPath(MentalLoad.MLTask.belongs_to), area),
-        animation: .default)
-    private var tasks: FetchedResults<MLTask>*/
+    @State private var showRenameTaskAlert = false
+    @State private var newAreaName: String = ""
+    
+    @ObservedObject var area: MLArea
     
     private var taskFetchRequest : FetchRequest<MLTask>
     private var tasks: FetchedResults<MLTask> {
@@ -42,29 +42,48 @@ struct AreaDetailView: View {
     
     var body: some View {
         VStack {
-            if tasks.isEmpty {
-                VStack {
-                    Text("No tasks added yet.")
-                }
-            } else {
-                List {
-                    Section("Tasks") {
+            List {
+                Section("Tasks") {
+                    if !tasks.isEmpty {
                         ForEach(tasks) { task in
                             NavigationLink(value: task) {
                                 OptionalValueDisplay(task.title, alternative: "No task title")
                             }
                         }
+                    } else {
+                        MissingInfoText("No tasks added yet")
                     }
-                    Section("Participants") {
+                }
+                Section("Participants") {
+                    if !participants.isEmpty {
                         ForEach(participants) { participant in
                             OptionalValueDisplay(participant.name, alternative: "No name")
                         }
+                    } else {
+                        MissingInfoText("No participants configured yet.")
                     }
                 }
             }
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(area.title ?? "No title")
+        .toolbar {
+            if editMode.isEditing {
+                ToolbarItem(placement: .cancellationAction) {
+                    RenameButton(buttonLabel: "Rename area", textHint: "New area name", value: $area.title)
+                    .onChange(of: area.title) { _, newValue in
+                        rename(area, to: newValue)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func rename(_ area: MLArea, to newName: String?) {
+        withAnimation {
+            area.title = newName
+            viewContext.save(with: .updateArea)
+        }
     }
 }
 

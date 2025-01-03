@@ -14,16 +14,11 @@ struct EditableText: View {
     let text: Binding<String?>
     var noContentText: LocalizedStringKey = "No content"
     
-    private var isEditing: Bool {
-        editMode?.wrappedValue.isEditing ?? false
-    }
-    
     var body: some View {
-        if !isEditing {
+        if !editMode.isEditing {
             OptionalValueDisplay(text.wrappedValue, alternative: noContentText)
         } else {
-            let binding = Binding(get: {text.wrappedValue ?? ""}, set: {text.wrappedValue = $0.emptyToNull()})
-            TextEditor(text: binding)
+            TextEditor(text: text ?? "")
                 .frame(minHeight: 200)
         }
     }

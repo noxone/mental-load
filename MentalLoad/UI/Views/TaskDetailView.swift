@@ -12,10 +12,10 @@ struct TaskDetailView: View {
     @Environment(\.editMode) private var editMode
 
     @State private var showAddParticipantSheet: Bool = false
-    @State private var showAlert = false
-    @State private var text: String = ""
+    @State private var showRenameTaskAlert = false
+    @State private var newTaskName: String = ""
 
-    @State var task: MLTask
+    @ObservedObject var task: MLTask
     
     private var fetchRequestForTask : FetchRequest<MLParticipant>
     private var participantsOfTask: FetchedResults<MLParticipant> {
@@ -47,12 +47,12 @@ struct TaskDetailView: View {
                 EditableText(titleKey: "Description", text: $task.subtitle, noContentText: "No description given")
             }
             Section("Assigned Participants") {
-                if isEditing || !participantsOfTask.isEmpty {
+                if editMode.isEditing || !participantsOfTask.isEmpty {
                     ForEach(participantsOfTask) { participant in
                         OptionalValueDisplay(participant.name, alternative: "No name")
                     }
                     .onDelete(perform: removeParticipantsFromTask)
-                    if isEditing {
+                    if editMode.isEditing {
                         Button(action: { showAddParticipantSheet = true }, label: {Text("Add participant")})
                             .confirmationDialog("Add participant", isPresented: $showAddParticipantSheet, titleVisibility: .automatic) {
                                 ForEach(participantsOfArea.filter { !participantsOfTask.contains($0) }) { participant in
@@ -76,40 +76,14 @@ struct TaskDetailView: View {
             ToolbarItem(placement: .primaryAction) {
                 EditButton()
             }
-            if !isEditing {
+            if editMode.isEditing {
                 ToolbarItem(placement: .cancellationAction) {
-                    renameTaskButton
+                    RenameButton(buttonLabel: "Rename task", textHint: "New task name", value: $task.title)
+                    .onChange(of: task.title ?? "") { _, newValue in
+                        rename(task, to: newValue)
+                    }
                 }
             }
-        }
-    }
-    
-    private var isEditing: Bool {
-        editMode?.wrappedValue.isEditing ?? false
-    }
-    
-    private var renameTaskButton: some View {
-        Button(action: {
-            text = task.title ?? ""
-            showAlert = true
-        },
-               label: { Label("Rename task", systemImage: "square.and.pencil") })
-        .alert(
-            Text("Rename task"),
-            isPresented: $showAlert
-        ) {
-            Button("Cancel", role: .cancel) {
-                text = ""
-            }
-            Button("OK") {
-                rename(task, to: text)
-                text = ""
-            }
-            
-            TextField("Task name", text: $text)
-                .textContentType(.jobTitle)
-        } message: {
-            Text("Please enter you pin.")
         }
     }
     

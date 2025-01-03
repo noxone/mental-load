@@ -33,6 +33,10 @@
 		C5F65ADF2D2682700091B872 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65ABE2D26826F0091B872 /* String.swift */; };
 		C5F65AE02D2682700091B872 /* MentalLoad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AC32D26826F0091B872 /* MentalLoad.xcdatamodeld */; };
 		C5F65AE12D2682700091B872 /* MentalLoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AC42D26826F0091B872 /* MentalLoadApp.swift */; };
+		C5F65AE52D273E620091B872 /* RenameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AE42D273E620091B872 /* RenameButton.swift */; };
+		C5F65AE72D2742580091B872 /* Optional+EditMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AE62D2742550091B872 /* Optional+EditMode.swift */; };
+		C5F65AE92D27F6FA0091B872 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AE82D27F6F80091B872 /* Binding.swift */; };
+		C5F65AEB2D2801130091B872 /* MissingInfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F65AEA2D2801130091B872 /* MissingInfoText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		C5F65AC22D26826F0091B872 /* MentalLoad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MentalLoad.entitlements; sourceTree = "<group>"; };
 		C5F65AC42D26826F0091B872 /* MentalLoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentalLoadApp.swift; sourceTree = "<group>"; };
 		C5F65AC62D2682700091B872 /* MentalLoad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MentalLoad.xcdatamodel; sourceTree = "<group>"; };
+		C5F65AE42D273E620091B872 /* RenameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameButton.swift; sourceTree = "<group>"; };
+		C5F65AE62D2742550091B872 /* Optional+EditMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+EditMode.swift"; sourceTree = "<group>"; };
+		C5F65AE82D27F6F80091B872 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		C5F65AEA2D2801130091B872 /* MissingInfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingInfoText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -179,8 +187,8 @@
 		C5F65AB32D26826F0091B872 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C5F65AB02D26826F0091B872 /* AreaDetailView.swift */,
 				C5F65AB12D26826F0091B872 /* AreaListView.swift */,
+				C5F65AB02D26826F0091B872 /* AreaDetailView.swift */,
 				C5F65AB22D26826F0091B872 /* TaskDetailView.swift */,
 			);
 			path = Views;
@@ -192,7 +200,9 @@
 				C5F65AB42D26826F0091B872 /* AreaDisplay.swift */,
 				C5F65AB52D26826F0091B872 /* EditableText.swift */,
 				C5F65AB62D26826F0091B872 /* HyphenableText.swift */,
+				C5F65AEA2D2801130091B872 /* MissingInfoText.swift */,
 				C5F65AB72D26826F0091B872 /* OptionalValueDisplay.swift */,
+				C5F65AE42D273E620091B872 /* RenameButton.swift */,
 				C5F65AB82D26826F0091B872 /* Title.swift */,
 			);
 			path = Widgets;
@@ -213,6 +223,8 @@
 		C5F65ABF2D26826F0091B872 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C5F65AE82D27F6F80091B872 /* Binding.swift */,
+				C5F65AE62D2742550091B872 /* Optional+EditMode.swift */,
 				C5F65ABD2D26826F0091B872 /* Logger.swift */,
 				C5F65ABE2D26826F0091B872 /* String.swift */,
 			);
@@ -382,6 +394,7 @@
 				C5F65ACB2D2682700091B872 /* PersistenceController.swift in Sources */,
 				C5F65ACC2D2682700091B872 /* PersistenceController+Area.swift in Sources */,
 				C5F65ACD2D2682700091B872 /* PersistenceController+Area+Participant.swift in Sources */,
+				C5F65AE92D27F6FA0091B872 /* Binding.swift in Sources */,
 				C5F65ACE2D2682700091B872 /* PersistenceController+Area+Task.swift in Sources */,
 				C5F65ACF2D2682700091B872 /* PersistenceController+Deduplicate.swift in Sources */,
 				C5F65AD02D2682700091B872 /* PersistenceController+History.swift in Sources */,
@@ -392,8 +405,11 @@
 				C5F65AD52D2682700091B872 /* AreaListView.swift in Sources */,
 				C5F65AD62D2682700091B872 /* TaskDetailView.swift in Sources */,
 				C5F65AD72D2682700091B872 /* AreaDisplay.swift in Sources */,
+				C5F65AE72D2742580091B872 /* Optional+EditMode.swift in Sources */,
 				C5F65AD82D2682700091B872 /* EditableText.swift in Sources */,
 				C5F65AD92D2682700091B872 /* HyphenableText.swift in Sources */,
+				C5F65AE52D273E620091B872 /* RenameButton.swift in Sources */,
+				C5F65AEB2D2801130091B872 /* MissingInfoText.swift in Sources */,
 				C5F65ADA2D2682700091B872 /* OptionalValueDisplay.swift in Sources */,
 				C5F65ADB2D2682700091B872 /* Title.swift in Sources */,
 				C5F65ADC2D2682700091B872 /* ContentView.swift in Sources */,

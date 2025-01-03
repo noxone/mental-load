@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AreaDisplay: View {
-    let area: MLArea
+    @ObservedObject var area: MLArea
     
     var body: some View {
         ZStack {
